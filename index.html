@@ -3,43 +3,346 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="宇瞳（杭州）光电有限公司项目荣获第十一届“创客中国”暨“浙江好项目”中小企业创新创业大赛杭州赛区总决赛创业组一等奖。">
+
+  <meta
+    name="description"
+    content="宇瞳（杭州）光电有限公司项目荣获第十一届“创客中国”暨“浙江好项目”中小企业创新创业大赛杭州赛区总决赛创业组一等奖。"
+  >
+
   <title>宇瞳光电荣获“创客中国”杭州赛区创业组一等奖</title>
-  <link rel="stylesheet" href="assets/style.css">
+
+  <!--
+    首屏主图优先加载。
+    确保 assets 目录中存在下列 WebP 文件。
+  -->
+  <link
+    rel="preload"
+    as="image"
+    type="image/webp"
+    href="assets/award-1440.webp"
+    imagesrcset="
+      assets/award-640.webp 640w,
+      assets/award-960.webp 960w,
+      assets/award-1440.webp 1440w,
+      assets/award-1920.webp 1920w
+    "
+    imagesizes="(max-width: 820px) calc(100vw - 32px), 1180px"
+    fetchpriority="high"
+  >
 
   <style>
-
     :root {
-      --news-page-top-gap: 50px;       /* 页面顶部到主标题的距离 */
-      --news-title-meta-gap: 20px;     /* 主标题到日期/来源的距离 */
-      --news-meta-image-gap: 50px;     /* 日期/来源到首图的距离 */
+      --ink: #13233b;
+      --muted: #66758a;
+      --line: #dbe3ee;
+      --blue: #0b63ce;
+      --blue-deep: #073d84;
+      --blue-pale: #eef6ff;
+      --gold: #c79a42;
+      --paper: #ffffff;
+      --max: 1180px;
+      --shadow: 0 18px 55px rgba(20, 45, 82, 0.10);
+
+      /* 首屏间距，可直接调整 */
+      --news-page-top-gap: 14px;
+      --news-title-meta-gap: 10px;
+      --news-meta-image-gap: 22px;
     }
 
-    /* 原 .content-section 通常带有较大的上下 margin，
-       首屏标题区单独清零，避免 margin 折叠形成顶部空白。 */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family:
+        "PingFang SC",
+        "Microsoft YaHei",
+        "Noto Sans CJK SC",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    figure {
+      margin: 0;
+    }
+
+    .container {
+      width: min(calc(100% - 48px), var(--max));
+      margin: 0 auto;
+    }
+
+    /* =========================
+       首屏标题区域
+       ========================= */
+
     main > .content-section:first-child {
-      margin: 0 !important;
-      padding: var(--news-page-top-gap) 0 0 !important;
+      margin: 0;
+      padding: var(--news-page-top-gap) 0 0;
     }
 
-    main > .content-section:first-child h2 {
-      margin: 0 0 var(--news-title-meta-gap) !important;
+    main > .content-section:first-child h1 {
+      margin: 0 0 var(--news-title-meta-gap);
+      font-size: clamp(30px, 4.1vw, 48px);
+      line-height: 1.35;
+      letter-spacing: -0.025em;
     }
 
-    main > .content-section:first-child .meta {
-      margin: 0 !important;
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
     }
 
-    /* 原 .article 通常有较大的 padding-top，
-       这里直接控制日期区域与首图之间的距离。 */
-    main > article.article {
-      padding-top: var(--news-meta-image-gap) !important;
+    .meta span {
+      position: relative;
     }
 
-    /* 防止首图自身的默认外边距继续放大空隙。 */
-    main > article.article > .lead-photo {
-      margin-top: 0 !important;
+    .meta span::before {
+      content: "";
+      position: absolute;
+      left: -14px;
+      top: 50%;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #9ba9ba;
+      transform: translateY(-50%);
     }
+
+    /* =========================
+       正文
+       ========================= */
+
+    .article {
+      padding-top: var(--news-meta-image-gap);
+      padding-bottom: 90px;
+    }
+
+    .responsive-picture {
+      display: block;
+      width: 100%;
+    }
+
+    .responsive-picture > img {
+      width: 100%;
+      height: auto;
+    }
+
+    .lead-photo,
+    .photo-grid figure,
+    .wide-photo,
+    .media-shot {
+      overflow: hidden;
+    }
+
+    .lead-photo img,
+    .wide-photo img,
+    .photo-grid img {
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .lead-photo img {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    figcaption {
+      margin-top: 12px;
+      text-align: center;
+      color: #7b8899;
+      font-size: 13px;
+    }
+
+    .lead {
+      max-width: 900px;
+      margin: 48px auto 62px;
+      color: #263a55;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 2;
+    }
+
+    .content-section {
+      margin: 70px 0;
+    }
+
+    .content-section h2 {
+      margin: 0 0 22px;
+      font-size: clamp(25px, 3vw, 34px);
+      line-height: 1.45;
+    }
+
+    .content-section p {
+      margin: 0 0 18px;
+      color: #41536a;
+      font-size: 17px;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 38px;
+    }
+
+    .photo-grid img {
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: minmax(250px, 0.75fr) minmax(0, 1.5fr);
+      gap: 70px;
+      align-items: start;
+      padding: 54px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-index {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+    }
+
+    .wide-photo {
+      margin: 18px 0 72px;
+    }
+
+    .wide-photo img {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    /* =========================
+       媒体报道
+       ========================= */
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+    }
+
+    .media-card {
+      display: grid;
+      grid-template-columns: 0.9fr 1.25fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 78px;
+      padding: 48px;
+      background: var(--blue-pale);
+      border: 1px solid #d8e9fc;
+      border-radius: 24px;
+    }
+
+    .media-card h2 {
+      margin: 12px 0 16px;
+      font-size: 30px;
+      line-height: 1.35;
+    }
+
+    .media-card p {
+      margin: 0 0 26px;
+      color: #4c6078;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 20px;
+      color: #ffffff;
+      background: var(--blue);
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(11, 99, 206, 0.22);
+    }
+
+    .media-shot {
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .media-shot img {
+      height: auto;
+      transition: transform 0.35s ease;
+    }
+
+    .media-shot:hover img {
+      transform: scale(1.015);
+    }
+
+    .article-footer {
+      margin-top: 44px;
+      padding-top: 26px;
+      color: #8490a0;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+    }
+
+    .article-footer p {
+      margin: 4px 0;
+    }
+
+    /*
+      浏览器接近这些区块时再进行布局和绘制，
+      可降低长页面的初始渲染压力。
+    */
+    .article > .content-section,
+    .wide-photo,
+    .media-card,
+    .article-footer {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 700px;
+    }
+
+    /* =========================
+       响应式
+       ========================= */
 
     @media (max-width: 820px) {
       :root {
@@ -47,18 +350,93 @@
         --news-title-meta-gap: 8px;
         --news-meta-image-gap: 16px;
       }
+
+      .container {
+        width: min(calc(100% - 32px), var(--max));
+      }
+
+      main > .content-section:first-child h1 {
+        font-size: clamp(27px, 8vw, 40px);
+      }
+
+      .meta span::before {
+        display: none;
+      }
+
+      .article {
+        padding-bottom: 60px;
+      }
+
+      .lead {
+        margin: 34px auto 46px;
+        font-size: 18px;
+      }
+
+      .photo-grid,
+      .split-section,
+      .media-card {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-grid {
+        gap: 24px;
+      }
+
+      .split-section {
+        gap: 12px;
+        padding: 42px 0;
+      }
+
+      .content-section {
+        margin: 52px 0;
+      }
+
+      .wide-photo {
+        margin-bottom: 50px;
+      }
+
+      .media-card {
+        gap: 30px;
+        margin-top: 52px;
+        padding: 26px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      body {
+        line-height: 1.75;
+      }
+
+      main > .content-section:first-child h1 {
+        font-size: 27px;
+      }
+
+      .lead-photo img,
+      .photo-grid img,
+      .wide-photo img {
+        border-radius: 12px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      .content-section p {
+        font-size: 16px;
+      }
     }
   </style>
-
 </head>
+
 <body>
-
-
   <main>
-      <section class="content-section">
+    <section class="content-section">
       <div class="container">
+        <h1>
+          热烈祝贺宇瞳（杭州）光电项目斩获第十一届“创客中国”暨“浙江好项目”
+          中小企业创新创业大赛杭州赛区总决赛创业组一等奖！
+        </h1>
 
-        <h2>热烈祝贺宇瞳（杭州）光电项目斩获第十一届“创客中国”暨“浙江好项目”中小企业创新创业大赛杭州赛区总决赛创业组一等奖！</h2>
         <div class="meta">
           <time datetime="2026-07-31">2026年7月31日</time>
           <span>宇瞳（杭州）光电有限公司</span>
@@ -67,25 +445,106 @@
     </section>
 
     <article class="container article">
+      <!-- 首屏图片：不要使用 loading="lazy" -->
       <figure class="lead-photo">
-        <img src="assets/award.png" alt="第十一届“创客中国”暨“浙江好项目”大赛创业组一等奖奖杯与荣誉证书">
+        <picture class="responsive-picture">
+          <source
+            type="image/webp"
+            srcset="
+              assets/award-640.webp 640w,
+              assets/award-960.webp 960w,
+              assets/award-1440.webp 1440w,
+              assets/award-1920.webp 1920w
+            "
+            sizes="(max-width: 820px) calc(100vw - 32px), 1180px"
+          >
+
+          <!-- 原图作为兼容回退 -->
+          <img
+            src="assets/award.png"
+            alt="第十一届“创客中国”暨“浙江好项目”大赛创业组一等奖奖杯与荣誉证书"
+            width="2048"
+            height="1152"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          >
+        </picture>
+
         <figcaption>创业组一等奖奖杯与荣誉证书</figcaption>
       </figure>
 
-      <p class="lead">近日，第十一届“创客中国”暨“浙江好项目”中小企业创新创业大赛杭州赛区总决赛圆满收官。宇瞳（杭州）光电有限公司参赛项目凭借清晰的技术路径、扎实的研发积累和明确的产业化前景，荣获创业组一等奖。</p>
+      <p class="lead">
+        近日，第十一届“创客中国”暨“浙江好项目”中小企业创新创业大赛杭州赛区总决赛圆满收官。
+        宇瞳（杭州）光电有限公司参赛项目凭借清晰的技术路径、扎实的研发积累和明确的产业化前景，
+        荣获创业组一等奖。
+      </p>
 
       <section class="content-section">
-        <h2>创新项目同台竞技，宇瞳（杭州）光电脱颖而出</h2>
-        <p>本届杭州赛区总决赛汇集高端制造、集成电路、人工智能、商业航天等领域的创新项目。比赛采用路演与答辩相结合的方式，参赛团队围绕技术先进性、市场空间、商业模式和产业化能力接受评审。</p>
-        <p>面对高强度的现场展示与问答，宇瞳（杭州）光电团队系统阐述了项目的核心价值、关键技术及落地规划，获得评审认可。</p>
+        <h2>创新项目同台竞技，宇瞳光电脱颖而出</h2>
+
+        <p>
+          本届杭州赛区总决赛汇集高端制造、集成电路、人工智能、商业航天等领域的创新项目。
+          比赛采用路演与答辩相结合的方式，参赛团队围绕技术先进性、市场空间、商业模式和产业化能力接受评审。
+        </p>
+
+        <p>
+          面对高强度的现场展示与问答，宇瞳（杭州）光电团队系统阐述了项目的核心价值、
+          关键技术及落地规划，获得评审认可。
+        </p>
 
         <div class="photo-grid">
           <figure>
-            <img src="assets/venue.jpg" alt="第十一届创客中国杭州赛区总决赛会场" loading="lazy">
+            <picture class="responsive-picture">
+              <source
+                type="image/webp"
+                srcset="
+                  assets/venue-480.webp 480w,
+                  assets/venue-720.webp 720w,
+                  assets/venue-960.webp 960w,
+                  assets/venue-1440.webp 1440w
+                "
+                sizes="(max-width: 820px) calc(100vw - 32px), 576px"
+              >
+
+              <img
+                src="assets/venue.jpg"
+                alt="第十一届创客中国杭州赛区总决赛会场"
+                width="2048"
+                height="1365"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              >
+            </picture>
+
             <figcaption>总决赛现场</figcaption>
           </figure>
+
           <figure>
-            <img src="assets/presentation.jpg" alt="宇瞳（杭州）光电项目负责人在总决赛现场进行项目路演" loading="lazy">
+            <picture class="responsive-picture">
+              <source
+                type="image/webp"
+                srcset="
+                  assets/presentation-480.webp 480w,
+                  assets/presentation-720.webp 720w,
+                  assets/presentation-960.webp 960w,
+                  assets/presentation-1440.webp 1440w
+                "
+                sizes="(max-width: 820px) calc(100vw - 32px), 576px"
+              >
+
+              <img
+                src="assets/presentation.jpg"
+                alt="宇瞳（杭州）光电项目负责人在总决赛现场进行项目路演"
+                width="2048"
+                height="1365"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              >
+            </picture>
+
             <figcaption>宇瞳（杭州）光电项目路演现场</figcaption>
           </figure>
         </div>
@@ -96,14 +555,46 @@
           <span class="section-index">01</span>
           <h2>以底层技术创新回应产业需求</h2>
         </div>
+
         <div>
-          <p>宇瞳（杭州）光电聚焦数字光阀底层核心芯片及相关技术研发。参赛项目围绕“交叉技术芯片”展开，将机械、光学、电学等多学科技术进行融合，面向微型驱动与精密控制场景，探索在智能终端、航空航天、智能制造、数据中心等领域的应用。</p>
-          <p>项目已完成关键技术从原理到样机的阶段性验证，并持续推进工程化、可靠性和量产能力建设。此次获奖，是赛事评审对项目创新性与发展潜力的认可，也为后续产业协同、资源对接和市场拓展提供了新的契机。</p>
+          <p>
+            宇瞳（杭州）光电聚焦数字光阀底层核心芯片及相关技术研发。
+            参赛项目围绕“交叉技术芯片”展开，将机械、光学、电学等多学科技术进行融合，
+            面向微型驱动与精密控制场景，探索在智能终端、航空航天、智能制造、数据中心等领域的应用。
+          </p>
+
+          <p>
+            项目已完成关键技术从原理到样机的阶段性验证，并持续推进工程化、可靠性和量产能力建设。
+            此次获奖，是赛事评审对项目创新性与发展潜力的认可，
+            也为后续产业协同、资源对接和市场拓展提供了新的契机。
+          </p>
         </div>
       </section>
 
       <figure class="wide-photo">
-        <img src="assets/ceremony.jpg" alt="第十一届创客中国杭州赛区总决赛颁奖典礼合影" loading="lazy">
+        <picture class="responsive-picture">
+          <source
+            type="image/webp"
+            srcset="
+              assets/ceremony-640.webp 640w,
+              assets/ceremony-960.webp 960w,
+              assets/ceremony-1440.webp 1440w,
+              assets/ceremony-1920.webp 1920w
+            "
+            sizes="(max-width: 820px) calc(100vw - 32px), 1180px"
+          >
+
+          <img
+            src="assets/ceremony.jpg"
+            alt="第十一届创客中国杭州赛区总决赛颁奖典礼合影"
+            width="2048"
+            height="1152"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+          >
+        </picture>
+
         <figcaption>总决赛颁奖典礼现场</figcaption>
       </figure>
 
@@ -112,9 +603,18 @@
           <span class="section-index">02</span>
           <h2>荣誉是肯定，更是新的起点</h2>
         </div>
+
         <div>
-          <p>本次获奖离不开团队在研发、工程、产品和市场等环节的持续协同，也离不开各级主管部门、赛事组织方、评审专家及合作伙伴的支持。</p>
-          <p>未来，宇瞳（杭州）光电将继续坚持技术创新与产业需求并重，稳步推进核心产品研发和工程化落地，以更可靠的产品、更扎实的交付能力服务客户，为相关产业链自主创新贡献力量。</p>
+          <p>
+            本次获奖离不开团队在研发、工程、产品和市场等环节的持续协同，
+            也离不开各级主管部门、赛事组织方、评审专家及合作伙伴的支持。
+          </p>
+
+          <p>
+            未来，宇瞳（杭州）光电将继续坚持技术创新与产业需求并重，
+            稳步推进核心产品研发和工程化落地，以更可靠的产品、更扎实的交付能力服务客户，
+            为相关产业链自主创新贡献力量。
+          </p>
         </div>
       </section>
 
@@ -122,14 +622,52 @@
         <div class="media-copy">
           <span class="eyebrow">MEDIA COVERAGE</span>
           <h2>杭州网关注报道</h2>
-          <p>杭州网在相关报道中介绍了本届赛事情况，并对宇瞳（杭州）光电参赛项目的技术方向与应用前景进行了报道。</p>
-          <a class="button" href="https://hznews.hangzhou.com.cn/jingji/content/2026-07/31/content_9268599.htm" target="_blank" rel="noopener noreferrer">
+
+          <p>
+            杭州网在相关报道中介绍了本届赛事情况，
+            并对宇瞳（杭州）光电参赛项目的技术方向与应用前景进行了报道。
+          </p>
+
+          <a
+            class="button"
+            href="https://hznews.hangzhou.com.cn/jingji/content/2026-07/31/content_9268599.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             查看原报道
             <span aria-hidden="true">↗</span>
           </a>
         </div>
-        <a class="media-shot" href="https://hznews.hangzhou.com.cn/jingji/content/2026-07/31/content_9268599.htm" target="_blank" rel="noopener noreferrer" aria-label="打开杭州网原报道">
-          <img src="assets/media-report.png" alt="杭州网关于创客中国杭州赛区总决赛的报道截图" loading="lazy">
+
+        <a
+          class="media-shot"
+          href="https://hznews.hangzhou.com.cn/jingji/content/2026-07/31/content_9268599.htm"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="打开杭州网原报道"
+        >
+          <picture class="responsive-picture">
+            <source
+              type="image/webp"
+              srcset="
+                assets/media-report-480.webp 480w,
+                assets/media-report-720.webp 720w,
+                assets/media-report-960.webp 960w,
+                assets/media-report-1440.webp 1440w
+              "
+              sizes="(max-width: 820px) calc(100vw - 84px), 620px"
+            >
+
+            <img
+              src="assets/media-report.png"
+              alt="杭州网关于创客中国杭州赛区总决赛的报道截图"
+              width="1053"
+              height="541"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+            >
+          </picture>
         </a>
       </section>
 
@@ -139,8 +677,6 @@
       </footer>
     </article>
   </main>
-
-
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"7939e04a4baf43c8b86a560f74aac60e"}' crossorigin="anonymous"></script>
 </body>
 </html>
