@@ -426,6 +426,28 @@
       }
     }
   </style>
+  <link rel="preload" as="image" type="image/webp" href="assets/award-2048.webp" imagesrcset="assets/award-640.webp 640w, assets/award-960.webp 960w, assets/award-1440.webp 1440w, assets/award-1920.webp 1920w, assets/award-2048.webp 2048w" imagesizes="(max-width: 820px) calc(100vw - 32px), 1180px" fetchpriority="high" data-news-image-preload="award">
+
+  <style id="news-image-performance">
+    .responsive-picture {
+      display: block;
+      width: 100%;
+    }
+
+    .responsive-picture > img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .lead-photo,
+    .photo-grid figure,
+    .wide-photo,
+    .media-shot {
+      overflow: hidden;
+    }
+  </style>
+
 </head>
 
 <body>
