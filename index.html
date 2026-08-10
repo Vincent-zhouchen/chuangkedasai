@@ -477,10 +477,10 @@
   <main>
     <section class="content-section">
       <div class="container">
-        <h2>
+        <h1>
           热烈祝贺宇瞳（杭州）光电项目斩获第十一届“创客中国”暨“浙江好项目”
           中小企业创新创业大赛杭州赛区总决赛创业组一等奖！
-        </h2>
+        </h1>
 
         <div class="meta">
           <time datetime="2026-07-31">2026年7月31日</time>
@@ -680,14 +680,27 @@
               aria-label="打开杭州科创集团相关报道"
             >
               <div class="matrix-card-img">
-                <!-- 非首屏媒体图：浏览器原生懒加载 + 异步解码 + 低优先级 -->
+                <picture class="responsive-picture">
+                  <source
+                    type="image/webp"
+                    srcset="
+                      assets/4-480.webp 480w,
+                      assets/4-720.webp 720w,
+                      assets/4-960.webp 960w,
+                      assets/4-1440.webp 1440w
+                    "
+                    sizes="(max-width: 520px) calc(100vw - 32px), (max-width: 820px) calc((100vw - 56px) / 2), 377px"
+                  >
                 <img
                   src="assets/4.png"
                   alt="杭州科创集团相关报道"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority="low"
-                >
+                    width="1053"
+                    height="541"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  >
+                </picture>
               </div>
               <div class="matrix-card-label">杭州科创集团</div>
             </a>
@@ -701,13 +714,27 @@
               aria-label="打开杭州网原报道"
             >
               <div class="matrix-card-img">
+                <picture class="responsive-picture">
+                  <source
+                    type="image/webp"
+                    srcset="
+                      assets/media-report-480.webp 480w,
+                      assets/media-report-720.webp 720w,
+                      assets/media-report-960.webp 960w,
+                      assets/media-report-1440.webp 1440w
+                    "
+                    sizes="(max-width: 520px) calc(100vw - 32px), (max-width: 820px) calc((100vw - 56px) / 2), 377px"
+                  >
                   <img
                     src="assets/media-report.png"
                     alt="杭州网关于创客中国杭州赛区总决赛的报道截图"
+                    width="1053"
+                    height="541"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
                   >
+                </picture>
               </div>
               <div class="matrix-card-label">杭州网</div>
             </a>
@@ -721,14 +748,27 @@
               aria-label="打开湘湖高兴技术研究院相关报道"
             >
               <div class="matrix-card-img">
-                <!-- 非首屏媒体图：浏览器原生懒加载 + 异步解码 + 低优先级 -->
+                <picture class="responsive-picture">
+                  <source
+                    type="image/webp"
+                    srcset="
+                      assets/media-report-480.webp 480w,
+                      assets/media-report-720.webp 720w,
+                      assets/media-report-960.webp 960w,
+                      assets/media-report-1440.webp 1440w
+                    "
+                    sizes="(max-width: 520px) calc(100vw - 32px), (max-width: 820px) calc((100vw - 56px) / 2), 377px"
+                  >
                 <img
                   src="assets/3.png"
                   alt="湘湖高兴技术研究院相关报道"
-                  loading="lazy"
-                  decoding="async"
-                  fetchpriority="low"
-                >
+                    width="1053"
+                    height="541"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                  >
+                </picture>
               </div>
               <div class="matrix-card-label">湘湖高兴技术研究院</div>
             </a>
